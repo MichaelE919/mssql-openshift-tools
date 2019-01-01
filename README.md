@@ -1,6 +1,16 @@
-# Microsoft SQLServer Tools for OpenShift
+# MSSQL Command Line in a Container
 
-1. [MSSQL Client](https://github.com/VeerMuchandi/mssql-openshift-tools/tree/master/mssql-client) : Deploy this container on OpenShift, `rsh` into the container and run `sqlcmd` CLI to connect to a SQL Server database
-2. [PHP7 enhanced with MSSQL](https://github.com/VeerMuchandi/mssql-openshift-tools/tree/master/php7-mssql): Connect to MSSQL from a PHP Application.
+This is a simple container that includes CLI for Microsoft SQLServer. It is useful if you want to connect to a MS SQLServer database from a container running on OpenShift.
 
+This is also available as built container on Quay.io as [quay.io/veer_muchandi/mssqlcli](quay.io/veer_muchandi/mssqlcli) that can be deployed as
 
+```
+$ oc new-app docker.io/veermuchandi/mssqlcli
+```
+
+Once deployed, you can `rsh` into the pod and connect to the database as follows:
+
+```
+$ sqlcmd -S <databaseserver> -U <user> -P <password> -d <database>
+ 
+```
