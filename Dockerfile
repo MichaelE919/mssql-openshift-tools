@@ -3,7 +3,8 @@ LABEL maintainer="Michael Eichenberger mikeetpt@gmail.com"
 
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
     curl -o /etc/yum.repos.d/mssql-release.repo https://packages.microsoft.com/config/rhel/7/prod.repo && \
-    ACCEPT_EULA=Y yum install -y msodbcsql mssql-tools unixODBC-devel && yum clean all -y
+    ACCEPT_EULA=Y yum install -y msodbcsql mssql-tools unixODBC-devel krb5-workstation && \
+    yum clean all -y
 
 ADD ./init.sh ./
 ADD ./uid_entrypoint.sh ./
